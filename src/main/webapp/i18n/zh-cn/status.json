@@ -1,0 +1,10 @@
+{
+    "growupApp": {
+        "Status" : {
+            "null": "",
+            "draft": "draft",
+            "confirmed": "confirmed",
+            "canceled": "canceled"
+        }
+    }
+}

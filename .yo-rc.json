@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "Growup",
+    "packageName": "com.rcstc.growup",
+    "packageFolder": "com/rcstc/growup",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "useSass": false,
+    "buildTool": "gradle",
+    "frontendBuilder": "grunt",
+    "enableTranslation": true,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "53bbb68aa2fd0f21628041f737633522a2371358",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}

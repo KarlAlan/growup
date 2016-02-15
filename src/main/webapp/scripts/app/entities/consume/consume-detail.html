@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span translate="growupApp.consume.detail.title">Consume</span> {{consume.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="growupApp.consume.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{consume.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.consume.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{consume.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.consume.applyDate">ApplyDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{consume.applyDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.consume.applyValue">ApplyValue</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{consume.applyValue}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.consume.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'growupApp.Status.' + consume.status}}">{{consume.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.consume.auditDate">AuditDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{consume.auditDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.consume.auditValue">AuditValue</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{consume.auditValue}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.consume.applyer">applyer</span>
+                </td>
+                <td>
+                    {{consume.applyerId}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.consume.auditor">auditor</span>
+                </td>
+                <td>
+                    {{consume.auditorId}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

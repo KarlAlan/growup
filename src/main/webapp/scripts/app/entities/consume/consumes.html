@@ -1,0 +1,88 @@
+<div>
+    <h2 translate="growupApp.consume.home.title">Consumes</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="consume.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="growupApp.consume.home.createLabel">Create new Consume
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'growupApp.consume.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="reset()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="growupApp.consume.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="growupApp.consume.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="applyDate"><span translate="growupApp.consume.applyDate">ApplyDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="applyValue"><span translate="growupApp.consume.applyValue">ApplyValue</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="growupApp.consume.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="auditDate"><span translate="growupApp.consume.auditDate">AuditDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="auditValue"><span translate="growupApp.consume.auditValue">AuditValue</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="applyerId"><span translate="growupApp.consume.applyer">applyer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="auditorId"><span translate="growupApp.consume.auditor">auditor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+                <tr ng-repeat="consume in consumes track by consume.id">
+                    <td><a ui-sref="consume.detail({id:consume.id})">{{consume.id}}</a></td>
+                    <td>{{consume.name}}</td>
+                    <td>{{consume.description}}</td>
+                        <td>{{consume.applyDate | date:'mediumDate'}}</td>
+                    <td>{{consume.applyValue}}</td>
+                    <td translate="{{'growupApp.Status.' + consume.status}}">{{consume.status}}</td>
+                        <td>{{consume.auditDate | date:'mediumDate'}}</td>
+                    <td>{{consume.auditValue}}</td>
+                    <td>
+                        {{consume.applyerId}}
+                    </td>
+                    <td>
+                        {{consume.auditorId}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="consume.detail({id:consume.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="consume.edit({id:consume.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="consume.delete({id:consume.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

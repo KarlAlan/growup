@@ -1,0 +1,31 @@
+{
+    "growupApp": {
+        "task" : {
+            "home": {
+                "title": "Tasks",
+                "createLabel": "Créer un nouveau Task",
+                "createOrEditLabel": "Créer ou éditer un Task",
+                "search": "Search for Task"
+            },
+            "created": "Un nouveau Task a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Task avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Task avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Task {{ id }} ?"
+            },
+            "detail": {
+                "title": "Task"
+            },
+            "name": "Name",
+            "description": "Description",
+            "declareValue": "DeclareValue",
+            "auditValue": "AuditValue",
+            "status": "Status",
+            "declareDate": "DeclareDate",
+            "auditDate": "AuditDate",
+            "contributor": "Contributor",
+            "auditor": "Auditor"
+        }
+    }
+}
+

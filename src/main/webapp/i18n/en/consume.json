@@ -1,0 +1,30 @@
+{
+    "growupApp": {
+        "consume" : {
+            "home": {
+                "title": "Consumes",
+                "createLabel": "Create a new Consume",
+                "createOrEditLabel": "Create or edit a Consume",
+                "search": "Search for Consume"
+            },
+            "created": "A new Consume is created with identifier {{ param }}",
+            "updated": "A Consume is updated with identifier {{ param }}",
+            "deleted": "A Consume is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Consume {{ id }}?"
+            },
+            "detail": {
+                "title": "Consume"
+            },
+            "name": "Name",
+            "description": "Description",
+            "applyDate": "ApplyDate",
+            "applyValue": "ApplyValue",
+            "status": "Status",
+            "auditDate": "AuditDate",
+            "auditValue": "AuditValue",
+            "applyer": "Applyer",
+            "auditor": "Auditor"
+        }
+    }
+}

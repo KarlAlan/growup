@@ -1,0 +1,88 @@
+<div>
+    <h2 translate="growupApp.task.home.title">Tasks</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="task.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="growupApp.task.home.createLabel">Create new Task
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'growupApp.task.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="reset()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="growupApp.task.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="growupApp.task.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="declareValue"><span translate="growupApp.task.declareValue">DeclareValue</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="auditValue"><span translate="growupApp.task.auditValue">AuditValue</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="growupApp.task.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="declareDate"><span translate="growupApp.task.declareDate">DeclareDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="auditDate"><span translate="growupApp.task.auditDate">AuditDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contributor.name"><span translate="growupApp.task.contributor">contributor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="auditor.name"><span translate="growupApp.task.auditor">auditor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+                <tr ng-repeat="task in tasks track by task.id">
+                    <td><a ui-sref="task.detail({id:task.id})">{{task.id}}</a></td>
+                    <td>{{task.name}}</td>
+                    <td>{{task.description}}</td>
+                    <td>{{task.declareValue}}</td>
+                    <td>{{task.auditValue}}</td>
+                    <td translate="{{'growupApp.Status.' + task.status}}">{{task.status}}</td>
+                        <td>{{task.declareDate | date:'mediumDate'}}</td>
+                        <td>{{task.auditDate | date:'mediumDate'}}</td>
+                    <td>
+                        {{task.contributor.name}}
+                    </td>
+                    <td>
+                        {{task.auditor.name}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="task.detail({id:task.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="task.edit({id:task.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="task.delete({id:task.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{
+    "growupApp": {
+        "task" : {
+            "home": {
+                "title": "任务",
+                "createLabel": "新建任务",
+                "createOrEditLabel": "创建或编辑任务",
+                "search": "搜索任务"
+            },
+            "delete": {
+                "question": "你真的要删除{{ id }}这个任务么？ "
+            },
+            "detail": {
+                "title": "任务"
+            },
+            "name": "名称",
+            "description": "任务描述",
+            "declareValue": "申报值",
+            "auditValue": "审核值",
+            "status": "状态",
+            "declareDate": "申报日期",
+            "auditDate": "审核日期",
+            "contributor": "贡献人",
+            "auditor": "审核人"
+        }
+    }
+}

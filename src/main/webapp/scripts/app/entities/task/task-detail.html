@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span translate="growupApp.task.detail.title">Task</span> {{task.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="growupApp.task.name">Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{task.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.task.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{task.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.task.declareValue">DeclareValue</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{task.declareValue}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.task.auditValue">AuditValue</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{task.auditValue}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.task.status">Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'growupApp.Status.' + task.status}}">{{task.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.task.declareDate">DeclareDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{task.declareDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.task.auditDate">AuditDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{task.auditDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.task.contributor">contributor</span>
+                </td>
+                <td>
+                    {{task.contributor.name}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="growupApp.task.auditor">auditor</span>
+                </td>
+                <td>
+                    {{task.auditor.name}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

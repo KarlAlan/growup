@@ -1,0 +1,31 @@
+{
+    "growupApp": {
+        "consume" : {
+            "home": {
+                "title": "Consumes",
+                "createLabel": "Créer un nouveau Consume",
+                "createOrEditLabel": "Créer ou éditer un Consume",
+                "search": "Search for Consume"
+            },
+            "created": "Un nouveau Consume a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Consume avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Consume avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Consume {{ id }} ?"
+            },
+            "detail": {
+                "title": "Consume"
+            },
+            "name": "Name",
+            "description": "Description",
+            "applyDate": "ApplyDate",
+            "applyValue": "ApplyValue",
+            "status": "Status",
+            "auditDate": "AuditDate",
+            "auditValue": "AuditValue",
+            "applyer": "Applyer",
+            "auditor": "Auditor"
+        }
+    }
+}
+

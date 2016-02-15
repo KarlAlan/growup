@@ -1,0 +1,27 @@
+{
+    "growupApp": {
+        "consume" : {
+            "home": {
+                "title": "申请",
+                "createLabel": "创建申请",
+                "createOrEditLabel": "创建或编辑申请",
+                "search": "搜索申请"
+            },
+            "delete": {
+                "question": "你真的要删除{{ id }}这个申请么?"
+            },
+            "detail": {
+                "title": "申请"
+            },
+            "name": "名称",
+            "description": "描述",
+            "applyDate": "申请日期",
+            "applyValue": "值",
+            "status": "状态",
+            "auditDate": "审核日期",
+            "auditValue": "值",
+            "applyer": "申请人",
+            "auditor": "审核人"
+        }
+    }
+}

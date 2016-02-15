@@ -1,0 +1,108 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myTaskLabel" translate="growupApp.task.home.createOrEditLabel">Create or edit a Task</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="task.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="growupApp.task.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="task.name"
+                    required />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="growupApp.task.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="task.description"
+                    required ng-maxlength="2000" />
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.description.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="2000">
+                    This field cannot be longer than 2000 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="growupApp.task.declareValue" for="field_declareValue">DeclareValue</label>
+            <input type="number" class="form-control" name="declareValue" id="field_declareValue"
+                    ng-model="task.declareValue"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="growupApp.task.auditValue" for="field_auditValue">AuditValue</label>
+            <input type="number" class="form-control" name="auditValue" id="field_auditValue"
+                    ng-model="task.auditValue"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="growupApp.task.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="task.status" id="field_status" required>
+                <option value="draft" translate="growupApp.Status.draft">draft</option>
+                <option value="confirm" translate="growupApp.Status.confirm">confirm</option>
+                <option value="cancel" translate="growupApp.Status.cancel">cancel</option>
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="growupApp.task.declareDate" for="field_declareDate">DeclareDate</label>
+            <input id="field_declareDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="task.declareDate" is-open="datePickerForDeclareDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDeclareDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="growupApp.task.auditDate" for="field_auditDate">AuditDate</label>
+            <input id="field_auditDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="task.auditDate" is-open="datePickerForAuditDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForAuditDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label translate="growupApp.task.contributor" for="field_contributor">contributor</label>
+            <select class="form-control" id="field_contributor" name="contributor" ng-model="task.contributor" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="growupApp.task.auditor" for="field_auditor">auditor</label>
+            <select class="form-control" id="field_auditor" name="auditor" ng-model="task.auditor" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
