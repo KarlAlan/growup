@@ -2,8 +2,11 @@ package com.rcstc.growup.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.rcstc.growup.domain.Task;
+import com.rcstc.growup.domain.enumeration.Status;
 import com.rcstc.growup.repository.TaskRepository;
+import com.rcstc.growup.repository.UserRepository;
 import com.rcstc.growup.repository.search.TaskSearchRepository;
+import com.rcstc.growup.security.SecurityUtils;
 import com.rcstc.growup.web.rest.util.HeaderUtil;
 import com.rcstc.growup.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -20,6 +23,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,13 +39,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class TaskResource {
 
     private final Logger log = LoggerFactory.getLogger(TaskResource.class);
-        
+
     @Inject
     private TaskRepository taskRepository;
-    
+
     @Inject
     private TaskSearchRepository taskSearchRepository;
-    
+
+    @Inject
+    private UserRepository userRepository;
+
     /**
      * POST  /tasks -> Create a new task.
      */
@@ -54,6 +61,9 @@ public class TaskResource {
         if (task.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("task", "idexists", "A new task cannot already have an ID")).body(null);
         }
+        task.setStatus(Status.draft);
+        task.setDeclareDate(LocalDate.now());
+        task.setContributor(userRepository.findOneByLogin(SecurityUtils.getCurrentUser().getUsername()).get());
         Task result = taskRepository.save(task);
         taskSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/tasks/" + result.getId()))
@@ -90,7 +100,7 @@ public class TaskResource {
     public ResponseEntity<List<Task>> getAllTasks(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Tasks");
-        Page<Task> page = taskRepository.findAll(pageable); 
+        Page<Task> page = taskRepository.findByContributorOrderByDeclareDateDesc(SecurityUtils.getCurrentUserLogin(),pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/tasks");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

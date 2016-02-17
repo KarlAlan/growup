@@ -47,6 +47,7 @@
                     ng-model="task.declareValue"
                      />
         </div>
+        <!--
         <div class="form-group">
             <label class="control-label" translate="growupApp.task.auditValue" for="field_auditValue">AuditValue</label>
             <input type="number" class="form-control" name="auditValue" id="field_auditValue"
@@ -57,8 +58,8 @@
             <label class="control-label" translate="growupApp.task.status" for="field_status">Status</label>
             <select class="form-control" name="status" ng-model="task.status" id="field_status" required>
                 <option value="draft" translate="growupApp.Status.draft">draft</option>
-                <option value="confirm" translate="growupApp.Status.confirm">confirm</option>
-                <option value="cancel" translate="growupApp.Status.cancel">cancel</option>
+                <option value="confirmed" translate="growupApp.Status.confirm">confirm</option>
+                <option value="canceled" translate="growupApp.Status.cancel">cancel</option>
             </select>
             <div ng-show="editForm.status.$invalid">
                 <p class="help-block"
@@ -67,6 +68,7 @@
                 </p>
             </div>
         </div>
+
         <div class="form-group">
             <label class="control-label" translate="growupApp.task.declareDate" for="field_declareDate">DeclareDate</label>
             <input id="field_declareDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="task.declareDate" is-open="datePickerForDeclareDate.status.opened"
@@ -96,6 +98,7 @@
                 <option value=""></option>
             </select>
         </div>
+        -->
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">

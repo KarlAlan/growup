@@ -27,29 +27,28 @@ public class Task implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-    
+
     @NotNull
     @Size(max = 2000)
     @Column(name = "description", length = 2000, nullable = false)
     private String description;
-    
+
     @Column(name = "declare_value")
     private Integer declareValue;
-    
+
     @Column(name = "audit_value")
     private Integer auditValue;
-    
-    @NotNull
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private Status status;
-    
+
     @Column(name = "declare_date")
     private LocalDate declareDate;
-    
+
     @Column(name = "audit_date")
     private LocalDate auditDate;
-    
+
     @ManyToOne
     @JoinColumn(name = "contributor_id")
     private User contributor;
@@ -69,7 +68,7 @@ public class Task implements Serializable {
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
@@ -77,7 +76,7 @@ public class Task implements Serializable {
     public String getDescription() {
         return description;
     }
-    
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -85,7 +84,7 @@ public class Task implements Serializable {
     public Integer getDeclareValue() {
         return declareValue;
     }
-    
+
     public void setDeclareValue(Integer declareValue) {
         this.declareValue = declareValue;
     }
@@ -93,7 +92,7 @@ public class Task implements Serializable {
     public Integer getAuditValue() {
         return auditValue;
     }
-    
+
     public void setAuditValue(Integer auditValue) {
         this.auditValue = auditValue;
     }
@@ -101,7 +100,7 @@ public class Task implements Serializable {
     public Status getStatus() {
         return status;
     }
-    
+
     public void setStatus(Status status) {
         this.status = status;
     }
@@ -109,7 +108,7 @@ public class Task implements Serializable {
     public LocalDate getDeclareDate() {
         return declareDate;
     }
-    
+
     public void setDeclareDate(LocalDate declareDate) {
         this.declareDate = declareDate;
     }
@@ -117,7 +116,7 @@ public class Task implements Serializable {
     public LocalDate getAuditDate() {
         return auditDate;
     }
-    
+
     public void setAuditDate(LocalDate auditDate) {
         this.auditDate = auditDate;
     }
