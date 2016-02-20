@@ -91,6 +91,28 @@ public class TaskResource {
     }
 
     /**
+     * PUT  /tasks -> Audit an existing task.
+     */
+    @RequestMapping(value = "/tasks/audit",
+        method = RequestMethod.PUT,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Task> auditTask(@Valid @RequestBody Task task) throws URISyntaxException {
+        log.debug("REST request to audit Task : {}", task);
+        if (task.getId() == null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("task", "idnotexists", "A new task cannot audit")).body(null);
+        }
+        task.setStatus(Status.confirmed);
+        task.setAuditDate(LocalDate.now());
+        task.setAuditor(userRepository.findOneByLogin(SecurityUtils.getCurrentUser().getUsername()).get());
+        Task result = taskRepository.save(task);
+        taskSearchRepository.save(result);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert("task", task.getId().toString()))
+            .body(result);
+    }
+
+    /**
      * GET  /tasks -> get all the tasks.
      */
     @RequestMapping(value = "/tasks",

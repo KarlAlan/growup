@@ -104,6 +104,29 @@ angular.module('growupApp')
                     })
                 }]
             })
+            .state('task.audit', {
+                parent: 'task',
+                url: '/{id}/audit',
+                data: {
+                    authorities: ['ROLE_MAMA'],
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'scripts/app/entities/task/task-audit-dialog.html',
+                        controller: 'TaskAuditController',
+                        size: 'lg',
+                        resolve: {
+                            entity: ['Task', function(Task) {
+                                return Task.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                            $state.go('task', null, { reload: true });
+                        }, function() {
+                            $state.go('^');
+                        })
+                }]
+            })
             .state('task.delete', {
                 parent: 'task',
                 url: '/{id}/delete',

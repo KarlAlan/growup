@@ -4,9 +4,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="task.new" >
+                <button class="btn btn-primary" ui-sref="task.new" has-authority="ROLE_ZIZI">
                     <span class="glyphicon glyphicon-plus"></span>
-                    <span 
+                    <span
 class="hidden-xs"                        translate="growupApp.task.home.createLabel">Create new Task
                     </span>
                 </button>
@@ -54,30 +54,39 @@ class="hidden-xs"                        translate="growupApp.task.home.createLa
                         <td>{{task.declareDate | date:'mediumDate'}}</td>
                         <td>{{task.auditDate | date:'mediumDate'}}</td>
                     <td>
-                        {{task.contributor.name}}
+                        {{task.contributor.login}}
                     </td>
                     <td>
-                        {{task.auditor.name}}
+                        {{task.auditor.login}}
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
                                     ui-sref="task.detail({id:task.id})"
-                                    class="btn btn-info btn-sm"> 
+                                    class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="task.edit({id:task.id})"
+                                    has-authority="ROLE_ZIZI"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="task.delete({id:task.id})"
-                                    class="btn btn-danger btn-sm">                                    
+                                    has-authority="ROLE_ZIZI"
+                                    class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="task.audit({id:task.id})"
+                                    has-authority="ROLE_MAMA"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.audit"></span>
                             </button>
                         </div>
                     </td>

@@ -5,7 +5,7 @@ angular.module('growupApp').controller('UserManagementDialogController',
         function($scope, $stateParams, $uibModalInstance, entity, User, Language) {
 
         $scope.user = entity;
-        $scope.authorities = ["ROLE_USER", "ROLE_ADMIN"];
+        $scope.authorities = ["ROLE_USER", "ROLE_ADMIN", "ROLE_MAMA", "ROLE_ZIZI"];
         Language.getAll().then(function (languages) {
             $scope.languages = languages;
         });

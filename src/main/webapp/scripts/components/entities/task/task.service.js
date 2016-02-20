@@ -21,6 +21,15 @@ angular.module('growupApp')
                     return angular.toJson(data);
                 }
             },
+            'audit': {
+                method: 'PUT',
+                url: 'api/tasks/audit',
+                transformRequest: function (data) {
+                    data.declareDate = DateUtils.convertLocaleDateToServer(data.declareDate);
+                    data.auditDate = DateUtils.convertLocaleDateToServer(data.auditDate);
+                    return angular.toJson(data);
+                }
+            },
             'save': {
                 method: 'POST',
                 transformRequest: function (data) {
